@@ -16,6 +16,8 @@ public class Aliens implements CollidableSpaceInvadersModel, AlienSpaceInvadersM
 	private SpaceInvadersBoard board;
 	
 	boolean isAlive = true;
+	private boolean movingRight = true;
+	private boolean movingLeft = false;
 	
 	public Aliens(int x, int y, int width, int height, int speed) {
 		this.x = x;
@@ -46,19 +48,27 @@ public class Aliens implements CollidableSpaceInvadersModel, AlienSpaceInvadersM
 
 	@Override
 	public void moveAlien() {
-		x += speed;
+		if (movingRight) {
+            x += speed; // flytt til høyre
+        } else {
+            x -= speed; // flytt til venstre
+        }
 		
 	}
 
 	@Override
 	public void reverseDirection() {
-		x -= speed;
+		movingRight = !movingRight;
+		movingLeft = !movingLeft;
 		
+		if(movingRight) {
+			dropDown();
+		}
 	}
 
 	@Override
 	public void dropDown() {
-		y += 32;
+		y += board.size();
 		
 	}
 

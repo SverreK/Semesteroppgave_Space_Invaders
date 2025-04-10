@@ -8,16 +8,14 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
 
-import GameModel.Aliens;
+import GameModel.Aliens.Aliens;
 import GameModel.Ship;
 import GameModel.SpaceInvadersBoard;
 import GameModel.Interfaces.GridDimension;
 
 public class SpaceInvadersView extends JPanel {
 	
-	private final int FRAME_WIDTH = 512;
-	private final int FRAME_HEIGHT = 512;
-	
+
 	private ViewableSpaceInvadersModel model;
 	
 	//Sprites
@@ -39,8 +37,8 @@ public class SpaceInvadersView extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-        drawShip(g2, ship);
-        drawTopAlien(g2, alien);
+        drawShip(g2);
+        drawAliens(g2);
     }
 	
 	   private static Dimension getDefaultSize(GridDimension gd) {
@@ -51,10 +49,27 @@ public class SpaceInvadersView extends JPanel {
 	        return new Dimension(width, height);
 	    }
 	
-	 private void drawShip(Graphics2D g2, BufferedImage sprite) {
+	 private void drawShip(Graphics2D g2) {
 		 Ship ship = model.getShip();
-		 g2.drawImage(sprite, ship.getX(), ship.getY(), ship.getWidth(), ship.getHeight(), null);
+		 g2.drawImage(this.ship, ship.getX(), ship.getY(), ship.getWidth(), ship.getHeight(), null);
+		 System.out.println("Drawing ship");
 
+	 }
+	 
+	 private void drawAliens(Graphics2D g2) {
+		 System.out.println("Antall aliens: " + model.getAliens().size());
+		    for (Aliens alien : model.getAliens()) {
+		        System.out.println("Tegner alien på (" + alien.getX() + "," + alien.getY() + ")");
+		        if (alien.isAlive()) {
+		            g2.drawImage(this.alien, 
+		                        alien.getX(), 
+		                        alien.getY(), 
+		                        alien.getWidth(), 
+		                        alien.getHeight(), 
+		                        null);
+		        }
+		    }
+		 
 	 }
 	
 	

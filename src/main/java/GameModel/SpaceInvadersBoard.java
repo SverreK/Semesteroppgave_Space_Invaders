@@ -7,15 +7,18 @@ public class SpaceInvadersBoard implements GridDimension {
 	private static final int TILE_SIZE = 32;
 	private final int rows;
 	private final int cols;
+	private final int WIDTH;
 	
 	public SpaceInvadersBoard(int rows, int cols) {
 		this.rows = rows;
 		this.cols = cols;
-		
+		this.WIDTH = TILE_SIZE * cols; 
 	}
 	
-
-
+	public int width() {
+		return WIDTH;
+	}
+	
 	@Override
 	public int rows() {
 		return rows;
