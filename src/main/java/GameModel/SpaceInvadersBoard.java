@@ -4,7 +4,7 @@ import GameModel.Interfaces.GridDimension;
 
 public class SpaceInvadersBoard implements GridDimension {
 	
-	private static final int TILE_SIZE = 32;
+	private static final int TILE_SIZE = 38;
 	private final int rows;
 	private final int cols;
 	private final int WIDTH;

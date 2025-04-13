@@ -51,13 +51,11 @@ public class Ship implements MoveableSpaceInvadersModel, CollidableSpaceInvaders
 
 	@Override
 	public int getX() {
-		System.out.println(this.x);
 		return this.x;
 	}
 
 	@Override
 	public int getY() {
-		System.out.println(this.y);
 		return this.y;
 	}
 

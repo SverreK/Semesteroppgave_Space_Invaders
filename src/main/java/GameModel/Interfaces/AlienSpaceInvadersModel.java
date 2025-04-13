@@ -4,8 +4,6 @@ public interface AlienSpaceInvadersModel {
 	
 	void moveAlien();
 	
-	int getAlienCols();
-	
 	void reverseDirection();
 	
 	void dropDown();

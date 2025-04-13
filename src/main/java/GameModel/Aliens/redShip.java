@@ -1,39 +1,39 @@
 package GameModel.Aliens;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-
 import GameController.Interfaces.CollidableSpaceInvadersModel;
-import GameModel.Interfaces.AlienSpaceInvadersModel;
+import GameModel.Ship;
 import GameModel.SpaceInvadersBoard;
+import GameModel.Interfaces.AlienSpaceInvadersModel;
 
-public class Aliens implements CollidableSpaceInvadersModel, AlienSpaceInvadersModel {
+public class redShip implements CollidableSpaceInvadersModel, AlienSpaceInvadersModel {
 	
 	private int x, y;
 	private int width, height;
-	private int speed;
-	private int cols = 11;
+	private int speed = 2;
 	public SpaceInvadersBoard board;
-	private boolean isAlive = true;
+	boolean isAlive = false;
 	private boolean movingRight = true;
 	
-	public Aliens(int x, int y, int width, int height, int speed) {
+	
+	public redShip (int x, int y, int width, int height, int speed) {
 		this.x = x;
 		this.y = y;
 		this.width = width;
 		this.height = height;
 		this.speed = speed;
 	}
-
-	@Override
-	public int getWidth() {
-		return width;
+	
+	public static redShip newShip(SpaceInvadersBoard board) {
+		int speed = 20;
+		int width = board.size()*2;
+		int height = board.size();
+		int x = board.size() * board.cols() / 2 - board.size();
+		int y = board.size();
+		
+		return new redShip(x, y, width, height, speed);
 	}
-
-	@Override
-	public int getHeight() {
-		return height;
-	}
+	
+	
 
 	@Override
 	public void moveAlien() {
@@ -47,13 +47,16 @@ public class Aliens implements CollidableSpaceInvadersModel, AlienSpaceInvadersM
 
 	@Override
 	public void reverseDirection() {
-		movingRight = !movingRight;	
+		movingRight = !movingRight;
+		
 	}
 
 	@Override
 	public void dropDown() {
-		y += 10;
-		
+	}
+	
+	public void revive() {
+		isAlive = true;
 	}
 
 	@Override
@@ -76,4 +79,15 @@ public class Aliens implements CollidableSpaceInvadersModel, AlienSpaceInvadersM
 	public int getY() {
 		return y;
 	}
+
+	@Override
+	public int getWidth() {
+		return width;
+	}
+
+	@Override
+	public int getHeight() {
+		return height;
+	}
+
 }

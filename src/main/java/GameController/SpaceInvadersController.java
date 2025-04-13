@@ -39,6 +39,7 @@ public class SpaceInvadersController implements KeyListener {
             switch (e.getKeyCode()) {
                 case KeyEvent.VK_LEFT -> model.moveShip(-10, 0);
                 case KeyEvent.VK_RIGHT -> model.moveShip(10, 0);
+                case KeyEvent.VK_SPACE -> model.createBullet();
                 
                 }
         }
