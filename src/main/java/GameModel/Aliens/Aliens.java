@@ -1,70 +1,77 @@
 package GameModel.Aliens;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-
-import GameController.Interfaces.CollidableSpaceInvadersModel;
+import GameController.Interfaces.GameObject;
+import GameModel.Ship;
 import GameModel.Interfaces.AlienSpaceInvadersModel;
-import GameModel.SpaceInvadersBoard;
 
-public class Aliens implements CollidableSpaceInvadersModel, AlienSpaceInvadersModel {
+/**
+ * Represents a single alien in the Space Invaders game.
+ * Handles movement, state of the alien (dead or alive), scoring, and rendering positions
+ */
+public class Aliens implements GameObject, AlienSpaceInvadersModel {
 	
-	private int x, y;
-	private int width, height;
-	private int speed;
-	private int cols = 11;
-	public SpaceInvadersBoard board;
+	private AlienType type;
+	private int x, y, width, height, speed, deathTicks, scoreValue;
 	private boolean isAlive = true;
 	private boolean movingRight = true;
 	
-	public Aliens(int x, int y, int width, int height, int speed) {
+	/**
+	 * Constructs an Alien with specified position, size, type, and score value
+	 *
+	 * @param x          The x-position of the alien
+	 * @param y          The y-position of the alien
+	 * @param width      The width of the alien
+	 * @param height     The height of the alien
+	 * @param type       The type of the alien e.g CRAB, SQUID, etc
+	 * @param scoreValue The score the player earns by killing this alien
+	 */
+	public Aliens(int x, int y, int width, int height, AlienType type, int scoreValue) {
 		this.x = x;
 		this.y = y;
 		this.width = width;
 		this.height = height;
-		this.speed = speed;
+		this.speed = 12;
+		this.type = type;
+		this.scoreValue = scoreValue;
 	}
-
-	@Override
-	public int getWidth() {
-		return width;
+	
+	/**
+	 * Moves the alien downward vertically.
+	 */
+	public void dropDown() {
+		y += 10;
 	}
-
+	
 	@Override
-	public int getHeight() {
-		return height;
+	public void update() {
+		if (!isAlive) {
+			deathTicks++;
+		}
 	}
 
 	@Override
 	public void moveAlien() {
 		if (movingRight) {
-            x += speed; // flytt til høyre
+            x += speed;
         } else {
-            x -= speed; // flytt til venstre
+            x -= speed;
         }
-		
 	}
 
 	@Override
 	public void reverseDirection() {
 		movingRight = !movingRight;	
 	}
-
+	
 	@Override
-	public void dropDown() {
-		y += 10;
-		
+	public boolean isAlive() {
+		return isAlive;
 	}
 
 	@Override
 	public void kill() {
 		isAlive = false;
-		
-	}
-
-	@Override
-	public boolean isAlive() {
-		return isAlive;
+		deathTicks = 0;
 	}
 
 	@Override
@@ -75,5 +82,30 @@ public class Aliens implements CollidableSpaceInvadersModel, AlienSpaceInvadersM
 	@Override
 	public int getY() {
 		return y;
+	}
+	
+	@Override
+	public int getWidth() {
+		return width;
+	}
+
+	@Override
+	public int getHeight() {
+		return height;
+	}
+	
+	@Override
+	public int getScoreValue() {
+		return scoreValue;
+	}
+	
+	@Override
+	public int getDeathTicks() {
+		return deathTicks;
+	}
+	
+	@Override
+	public AlienType getAlienType() {
+		return type;
 	}
 }
