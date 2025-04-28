@@ -4,9 +4,13 @@ Space Invaders Game
 Dette er ein Java-implementasjon av arkadespelet Space Invaders.
 
 Om applikasjonen
+
+
 Dette er eit spel der spelaren styrer eit romskip som beveger seg horisontalt nedst på skjermen, og må skyte ned invaderande romvesen som kjem mot spelaren. Romvesena beveger seg sakte frå side til side og gradvis nedover skjermen etter kvart som tida går. Målet er å skyte ned alle romvesena før dei når botnen av skjermen, eller kolliderer med skipet.
 
 Funksjonar
+
+
 Styring: Spelaren bruker piltastane for å bevege romskipet til venstre og høgre.
 
 Skyting: Spelaren skyter med mellomromstasten (space bar), med ei kort nedkjølingstid mellom skota.
