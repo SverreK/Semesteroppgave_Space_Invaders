@@ -31,4 +31,5 @@ java.awt for teikning av grafikk, handtering av tastaturinput og spel-ticks
 Dette inkluderer java.awt.Graphics, java.awt.event.* og javax.swing.Timer.
 
 
-![2025-11-21 07-47-36](https://github.com/user-attachments/assets/ceb30120-2cfd-4640-b51e-92a9eb3d5caa)
+![space_invaders_game](https://github.com/user-attachments/assets/456943bb-192f-4ed2-b20d-f3617e4cd309)
+
