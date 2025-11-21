@@ -31,6 +31,4 @@ java.awt for teikning av grafikk, handtering av tastaturinput og spel-ticks
 Dette inkluderer java.awt.Graphics, java.awt.event.* og javax.swing.Timer.
 
 
-Video:
-
-https://youtu.be/EQQfEMpH6Dg
+![2025-11-21 07-47-36](https://github.com/user-attachments/assets/ceb30120-2cfd-4640-b51e-92a9eb3d5caa)
